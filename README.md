@@ -1,6 +1,7 @@
 #Bilkent-CS319- Battle for Middle Earth
 Object-Oriented Software Engineering Spring 2017
-Group 1H Members (Alphabetical Order):
+Group 1H Members (Alphabetical Order): 
+
 Arif Can Terzioğlu- 21302061
 Ece Altınyollar - 21301078
 Muhammed Emin Tosun - 21302401
