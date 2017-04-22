@@ -12,11 +12,10 @@ Raza Faraz - 21404239
 
 
 
-#News
+#Meeting Hours
 
-Held a meeting to find a project topic and write a README file.(11.02.2017)
-
-
+Mondays 16:40 - 18:40
+Saturdays 11:40 -  13:40
 
 
 #Description
