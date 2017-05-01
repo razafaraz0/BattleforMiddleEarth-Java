@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 
 public class Enemy extends GameObject {
 
-	private GameManager gameManger;
+
 	
 	public Enemy( int xCoordinate , int yCoordinate , GameIDs id)
 	{
@@ -22,7 +22,6 @@ public class Enemy extends GameObject {
 	public void tick(){
 
 		xCoordinate += xDirectedSpeed;
-		
 
 		//checks if the enemy doesnot go out of bound
 		if(xCoordinate <0 )  
@@ -45,7 +44,6 @@ public class Enemy extends GameObject {
 			//System.out.println("Within");
 		}
 
-		//randomFire();
 	}
 	
 	

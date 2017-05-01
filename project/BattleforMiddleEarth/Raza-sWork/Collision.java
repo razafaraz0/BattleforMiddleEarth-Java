@@ -1,7 +1,6 @@
 package myPart;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
+
 
 public class Collision {
 	

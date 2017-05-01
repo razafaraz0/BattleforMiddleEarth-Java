@@ -17,8 +17,7 @@ public class Player extends GameObject {
 	{
 		super(x , y , id);
 		this.gameManager = gameManager;
-		//xDirectedSpeed = 5;
-		//yDirectedSpeed = 5;
+
 	}
 	
 	public Rectangle getBounds(){
@@ -51,8 +50,10 @@ public class Player extends GameObject {
 		
 		PlayerEnemyCollisionHandling();
 		BulletcollisionHandling();
+		EnemyBulletPlayerCollisionHandling();
 	}
 
+	//the following method deals with Player EnemyCollission
 	private void PlayerEnemyCollisionHandling(){
 		
 		
@@ -65,13 +66,52 @@ public class Player extends GameObject {
 				if(getBounds().intersects(tempObj.getBounds()))
 				{
 					System.out.println("Player-EnemyCollision");
-					GameBar.health -= 2; 
+					//first the armor must reach 0 then health will decrease
+					if(GameBar.armor <= 0 )
+					{
+						GameBar.health -= 2; //health decreaes by 2 
+					}
+					else
+					{
+						GameBar.armor -= 1;
+						System.out.println(GameBar.armor);
+					}
+					
+					GameBar.score-=10;	//score decreses by 10
 				}
 				
 			}
-		}	
-		
+		}		
 	}
+	
+	//the following method deals with Enemy Bullet and Player Collission
+	private void EnemyBulletPlayerCollisionHandling(){
+		
+		
+		//the following method handle s player enemy collision
+		for(int i = 0 ; i < gameManager.theEnemyWeapon.size(); i++)
+		{
+			GameObject tempObj = gameManager.theEnemyWeapon.get(i);
+
+				if(getBounds().intersects(tempObj.getBounds()))
+				{
+					System.out.println("EnemyBullet- Player Collision");
+					//first the armor must reach 0 then health will decrease
+					if(GameBar.armor <= 0 )
+					{
+						GameBar.health -= 2; //health decreaes by 2 
+					}
+					else
+					{
+						GameBar.armor -= 1;
+					}
+					GameBar.score-=5;
+					gameManager.theEnemyWeapon.remove(i); // if the bullet and the player hit each other 
+				}
+				
+			}
+}	
+	
 	
 	//the following method handle s player enemy collision
 	private void BulletcollisionHandling(){
@@ -92,6 +132,7 @@ public class Player extends GameObject {
 				{
 					System.out.println("Player-Staff Collision");
 					gameManager.theEnemyList.remove(j);
+					GameBar.score+=50;
 				}
 				
 			}
@@ -101,6 +142,7 @@ public class Player extends GameObject {
 				{
 					System.out.println("Player-Sword Collision");
 					gameManager.theEnemyList.remove(j);
+					GameBar.score+=50;
 				}
 				
 			}
@@ -110,6 +152,7 @@ public class Player extends GameObject {
 				{
 					System.out.println("Player-Arrow Collision");
 					gameManager.theEnemyList.remove(j);
+					GameBar.score+=50;
 				}
 				
 			}
@@ -117,6 +160,7 @@ public class Player extends GameObject {
 	}
 }
 
+	
 	public void  render(Graphics graphics)
 	{
 		if(id == GameIDs.Player)

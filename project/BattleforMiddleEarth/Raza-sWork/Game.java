@@ -18,9 +18,8 @@ import java.util.concurrent.TimeUnit;
 		
 		protected GameManager gameManager;
 		private GameBar health;
-		
-		private enemyWeapon enemyFire;
-		private GameObject gameObject;
+		private GameBar armor;
+
 		
 		
 		public Game()
@@ -28,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 			gameManager = new GameManager();
 			this.addKeyListener(new InputManager(gameManager)); //this says listen for the key events
 			new gameScreen(this, "Battle For Middle Earth!" , WIDTH , HEIGHT);
+			armor = new GameBar();
 			health = new GameBar();
 			gameManager.addObject(new Player(340 , 550 , GameIDs.Player , gameManager));
 			//gameManager.addObject(new Enemy(0 , 20 , GameIDs.Enemy));
@@ -128,6 +128,7 @@ import java.util.concurrent.TimeUnit;
 			graphics.fillRect(0, 0, WIDTH, HEIGHT);
 
 			gameManager.render(graphics);
+			armor.render(graphics);
 			health.render(graphics);
 			graphics.dispose();
 			bs.show();
@@ -138,6 +139,7 @@ import java.util.concurrent.TimeUnit;
 			// TODO Auto-generated method stub
 			gameManager.tick(); //update all the elements of the game
 			health.tick();
+			armor.tick();
 
 		}
 		public boolean isRunning() {
