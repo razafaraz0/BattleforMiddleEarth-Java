@@ -5,6 +5,11 @@ public enum GameIDs {
 	Enemy(),
 	Sword(),
 	Staff(),
-	Arrow()
+	Arrow(),
+	Enemy2(),
+	BossEnemy(),
+	powerUpHealth(),
+	powerUpArmor(),
+	powerUp()
 	
 }

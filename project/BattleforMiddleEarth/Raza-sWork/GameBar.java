@@ -6,8 +6,10 @@ public class GameBar {
 
 	public static int health = 100;
 	public static int armor = 100;
+	public static int bossHealth = 100;
 	
 	private int greenColorShift = 255;
+	private int enemygreenColorShift = 255;
 	
 	public static int score = 0;
 	private int level = 0;
@@ -18,13 +20,16 @@ public class GameBar {
 		health = Game.boundControl(health, 0, 100);
 		greenColorShift = Game.boundControl(greenColorShift, 0, 255);
 		greenColorShift = health *2;
+		
+
+		bossHealth = Game.boundControl(bossHealth, 0, 100);
+		enemygreenColorShift = Game.boundControl(enemygreenColorShift, 0, 255);
+		enemygreenColorShift = bossHealth *2;
 	}
 	
 	public void render(Graphics graphics)
 	{
-		
-		/*graphics.setColor(Color.darkGray);
-		graphics.fillRect(0, 0, 690, 50);*/
+
 		
 		graphics.setColor(Color.gray);
 		graphics.fillRect(10, 10, 200, 22);  // 15 and 15 are postion on the screen
@@ -43,6 +48,17 @@ public class GameBar {
 		
 		graphics.drawString("Score : " + score , 250 , 32);
 		graphics.drawString("level : " + level , 450 , 32);
+		
+
+		//enemy health 
+	
+		graphics.setColor(Color.gray);
+		graphics.fillRect(450, 20, 200, 22);  // 15 and 15 are postion on the screen
+		graphics.setColor(new Color(75 , enemygreenColorShift , 0));
+		graphics.fillRect(450, 20, bossHealth*2, 22);  // 15 and 15 are postion on the screen
+		graphics.setColor(Color.white);
+		graphics.drawRect(450, 20, 200, 22);  // 15 and 15 are postion on the screen
+		
 	}
 	
 	public void setHealth(int x)
@@ -54,6 +70,7 @@ public class GameBar {
 	{
 		return health;
 	}
+
 
 	public int getScore() {
 		return score;

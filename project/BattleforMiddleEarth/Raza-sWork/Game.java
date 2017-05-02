@@ -3,7 +3,10 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import myPart.powerUp.PowerUpType;
 
 
 
@@ -19,6 +22,8 @@ import java.util.concurrent.TimeUnit;
 		protected GameManager gameManager;
 		private GameBar health;
 		private GameBar armor;
+		private GameBar bossHealth;
+		protected powerUp powerUpEntity;
 
 		
 		
@@ -29,33 +34,77 @@ import java.util.concurrent.TimeUnit;
 			new gameScreen(this, "Battle For Middle Earth!" , WIDTH , HEIGHT);
 			armor = new GameBar();
 			health = new GameBar();
+			bossHealth = new GameBar();
+			
 			gameManager.addObject(new Player(340 , 550 , GameIDs.Player , gameManager));
 			//gameManager.addObject(new Enemy(0 , 20 , GameIDs.Enemy));
 			//gameManager.addObject(gameManager.addEnemy(new Enemy(0 , 20 , GameIDs.Enemy)));
+		
 			
-	
+
 			
 			gameManager.addEnemyObjects(this);
 			
 			
+			/*
+			 * 					
+					
+					int random = new Random().nextInt(2);
+					if(random == 0 )
+					{
+						this.powerUpEntity = new powerUp(150 , 150 , GameIDs.powerUpHealth);
+						gameManager.addObject(powerUpEntity);
+					}
+					else
+					{
+						this.powerUpEntity = new powerUp(150 , 150 , GameIDs.powerUpArmor);
+						gameManager.addObject(powerUpEntity);
+					}
+					
+									finally{
+					try {
+						TimeUnit.SECONDS.sleep(10);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					gameManager.removeObject(this.powerUpEntity);
+				}
+				
+			 * 
+			 * */
+			
 			//the following method calls random fire after every 1 second
 			while(true)
 			{
-				try {
-					TimeUnit.SECONDS.sleep(1);
+				try
+				{
 					gameManager.randomFire();
-				} catch (InterruptedException e) {
+					TimeUnit.SECONDS.sleep(1);	
+					
+					int random = new Random().nextInt(2);
+					if(random == 0 )
+					{
+						this.powerUpEntity = new powerUp(150 , 150 , GameIDs.powerUpHealth);
+						gameManager.addObject(powerUpEntity);
+					}
+					else
+					{
+						this.powerUpEntity = new powerUp(150 , 150 , GameIDs.powerUpArmor);
+						gameManager.addObject(powerUpEntity);
+					}
+					TimeUnit.SECONDS.sleep(6);
+					gameManager.removeObject(this.powerUpEntity);
+					
+				}
+				catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				
 			}
 			
 			
 		}
 		
-		
-
-
 		public synchronized void start(){
 
 			thread = new Thread(this);
@@ -128,8 +177,9 @@ import java.util.concurrent.TimeUnit;
 			graphics.fillRect(0, 0, WIDTH, HEIGHT);
 
 			gameManager.render(graphics);
-			armor.render(graphics);
 			health.render(graphics);
+			bossHealth.render(graphics);
+			armor.render(graphics);
 			graphics.dispose();
 			bs.show();
 		}
@@ -140,6 +190,7 @@ import java.util.concurrent.TimeUnit;
 			gameManager.tick(); //update all the elements of the game
 			health.tick();
 			armor.tick();
+			bossHealth.tick();
 
 		}
 		public boolean isRunning() {

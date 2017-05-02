@@ -24,22 +24,26 @@ public class InputManager extends KeyAdapter {
 				{
 					if(key == KeyEvent.VK_UP)
 					{
-						//tempObject.yDirectedSpeed = -5;
-						tempObject.updateYCoordinate(tempObject.getYCoordinate()-10);
+						tempObject.yDirectedSpeed = -10;
+						
+						//tempObject.updateYCoordinate(tempObject.getYCoordinate()-10);
 					}
 					
 					if(key == KeyEvent.VK_DOWN)
 					{
-						tempObject.updateYCoordinate(tempObject.getYCoordinate()+10);
+						tempObject.yDirectedSpeed = 10;
+						//tempObject.updateYCoordinate(tempObject.getYCoordinate()+10);
 					}
 					if(key == KeyEvent.VK_RIGHT)
 					{
-						tempObject.updateXCoordinate(tempObject.getXCoordinate()+10);
+						tempObject.xDirectedSpeed = 10;
+						//tempObject.updateXCoordinate(tempObject.getXCoordinate()+10);
 					}
 					
 					if(key == KeyEvent.VK_LEFT)
 					{
-						tempObject.updateXCoordinate(tempObject.getXCoordinate()-10);
+						tempObject.xDirectedSpeed = -10;
+						//tempObject.updateXCoordinate(tempObject.getXCoordinate()-10);
 					}
 					
 					if(key == KeyEvent.VK_SPACE)
@@ -52,7 +56,7 @@ public class InputManager extends KeyAdapter {
 		
 		public 	void keyReleased(KeyEvent e)
 		{
-			/*int key = e.getKeyCode();
+			int key = e.getKeyCode();
 			System.out.println(key);//prints the kay pressed
 			
 			
@@ -64,10 +68,29 @@ public class InputManager extends KeyAdapter {
 				{
 					if(key == KeyEvent.VK_UP)
 					{
-						tempObject.yDirectedSpeed = -0;
-						//tempObject.updateYCoordinate(tempObject.getYCoordinate()-1);
-					}	
-				}
-			}*/
+						tempObject.yDirectedSpeed = 0;
+						
+						//tempObject.updateYCoordinate(tempObject.getYCoordinate()-10);
+					}
+					
+					if(key == KeyEvent.VK_DOWN)
+					{
+						tempObject.yDirectedSpeed = 0;
+						//tempObject.updateYCoordinate(tempObject.getYCoordinate()+10);
+					}
+					if(key == KeyEvent.VK_RIGHT)
+					{
+						tempObject.xDirectedSpeed = 0;
+						//tempObject.updateXCoordinate(tempObject.getXCoordinate()+10);
+					}
+					
+					if(key == KeyEvent.VK_LEFT)
+					{
+						tempObject.xDirectedSpeed = 0;
+						//tempObject.updateXCoordinate(tempObject.getXCoordinate()-10);
+					}
+					
+				} 
+			}
 		}
 }
