@@ -14,7 +14,7 @@ import myPart.powerUp.PowerUpType;
 	public class Game extends Canvas implements Runnable  {
 		
 		private static final long serialVersionUID = -262936385838274399L;
-		public static final int WIDTH = 690 , HEIGHT = 690;
+		public static final int WIDTH = 690 , HEIGHT = 690; //
 		
 		private Thread thread;
 		private boolean running = false;
@@ -40,9 +40,7 @@ import myPart.powerUp.PowerUpType;
 			//gameManager.addObject(new Enemy(0 , 20 , GameIDs.Enemy));
 			//gameManager.addObject(gameManager.addEnemy(new Enemy(0 , 20 , GameIDs.Enemy)));
 		
-			
-
-			
+						
 			gameManager.addEnemyObjects(this);
 			
 			
@@ -77,11 +75,12 @@ import myPart.powerUp.PowerUpType;
 			//the following method calls random fire after every 1 second
 			while(true)
 			{
+
 				try
 				{
-					gameManager.randomFire();
-					TimeUnit.SECONDS.sleep(1);	
 					
+					TimeUnit.SECONDS.sleep(1);	
+					gameManager.randomFire();
 					int random = new Random().nextInt(2);
 					if(random == 0 )
 					{
@@ -95,7 +94,7 @@ import myPart.powerUp.PowerUpType;
 					}
 					TimeUnit.SECONDS.sleep(6);
 					gameManager.removeObject(this.powerUpEntity);
-					
+					//TimeUnit.SECONDS.sleep(6);
 				}
 				catch (InterruptedException e) {
 					e.printStackTrace();

@@ -16,7 +16,7 @@ public class Enemy extends GameObject {
 			
 	}
 	public Rectangle getBounds(){
-		return new Rectangle(xCoordinate,yCoordinate,16,16);
+		return new Rectangle(xCoordinate,yCoordinate,32,32);
 	}
 	
 	public void tick(){
@@ -52,6 +52,6 @@ public class Enemy extends GameObject {
 	{
 
 		graphics.setColor(Color.RED);
-		graphics.fillRect(xCoordinate, yCoordinate, 16, 16);
+		graphics.fillRect(xCoordinate, yCoordinate, 32, 32);
 	}
 }

@@ -2,6 +2,7 @@ package myPart;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Enemy2  extends Enemy{
 
@@ -43,8 +44,13 @@ public class Enemy2  extends Enemy{
 	{
 
 		graphics.setColor(Color.orange);
-		graphics.fillRect(xCoordinate, yCoordinate, 16, 16);
+		graphics.fillRect(xCoordinate, yCoordinate, 32, 32);
 	}
+	
+	public Rectangle getBounds(){
+		return new Rectangle(xCoordinate,yCoordinate,32,32);
+	}
+	//add get boudn
 	
 	
 	

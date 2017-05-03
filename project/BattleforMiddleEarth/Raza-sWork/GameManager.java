@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public  class GameManager  {
 	
-	LinkedList<GameObject> object = new LinkedList<GameObject>();
+	LinkedList<GameObject> object = new LinkedList<GameObject>(); 
 	LinkedList<weapon> theWeaponList = new LinkedList<weapon>();	
 	LinkedList<Enemy> theEnemyList = new LinkedList<Enemy>();
 	LinkedList<Enemy2> theEnemyList2 = new LinkedList<Enemy2>();
@@ -28,9 +28,9 @@ public  class GameManager  {
 	{
 		this.game = game;
 		this.addEnemy(new BossEnemy(0 , startYPosition , GameIDs.BossEnemy));
-		/*this.addEnemy(new Enemy2(50 , startYPosition , GameIDs.Enemy2));
-		this.addEnemy(new Enemy2(100 , startYPosition , GameIDs.Enemy2));
-		this.addEnemy(new Enemy2(150 , startYPosition , GameIDs.Enemy2));*/
+		//this.addEnemy(new Enemy2(50 , startYPosition , GameIDs.Enemy2));
+		//this.addEnemy(new Enemy2(100 , startYPosition , GameIDs.Enemy2));
+		//this.addEnemy(new Enemy(150 , startYPosition , GameIDs.Enemy));
 	}
 	
 
